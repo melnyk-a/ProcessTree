@@ -1,5 +1,6 @@
 ﻿using Ninject;
 using Ninject.Extensions.Conventions;
+using ProcessTree.Domain;
 using ProcessTree.Presentation.Wpf.Views;
 using System.Windows;
 
@@ -13,12 +14,12 @@ namespace ProcessTree.Presentation.Wpf
 
             container.Bind(
                 configurator => configurator
-                .From("ProcessTree.Presentation.Wpf")
+                .From("ProcessTree.Presentation.Wpf", "ProcessTree.Domain")
                 .SelectAllClasses()
                 .BindAllInterfaces()
                 );
 
-                return container;
+            return container;
         }
 
         protected override void OnStartup(StartupEventArgs e)

@@ -10,6 +10,16 @@ namespace ProcessTree.Presentation.Wpf.Views
             InitializeComponent();
 
             DataContext = viewModel;
+
+            viewModel.ErrorErised += (sender, e) =>
+             {
+                 ShowError(e.ErrorMessage);
+             };
+        }
+
+        private void ShowError(string errorMessage)
+        {
+            MessageBox.Show(errorMessage);
         }
     }
 }

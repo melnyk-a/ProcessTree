@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ApplicationIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
@@ -72,7 +75,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BindableTreeView.cs" />
+    <Compile Include="ViewModels\ErrorEventArgs.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ProcessViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -104,12 +110,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessTree.Domain.Models\ProcessTree.Domain.Models.csproj">
+      <Project>{da8e4181-6c3f-4dcd-a94a-67441f4cc803}</Project>
+      <Name>ProcessTree.Domain.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessTree.Domain\ProcessTree.Domain.csproj">
+      <Project>{310a88f7-9de7-4a52-8f1a-7889eec26256}</Project>
+      <Name>ProcessTree.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessTree.Utilities.Wpf\ProcessTree.Utilities.Wpf.csproj">
+      <Project>{d10f121f-4a66-43c9-93b0-4ba6da2e8210}</Project>
+      <Name>ProcessTree.Utilities.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ApplicationIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
