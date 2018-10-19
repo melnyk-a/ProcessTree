@@ -37,13 +37,13 @@ namespace ProcessTree.Domain
             for (int i = 0; i < sortedNodesByParentId.Length; ++i)
             {
                 ExtendProcess parent = FindInTree(sortedNodesByParentId[i].ParentId);
-                if (parent != null)
+                if(sortedNodesByParentId[i].ParentId == 0 || parent==null)
                 {
-                    parent.Children.Add(sortedNodesByParentId[i]);
+                    orderedNodes.Add(sortedNodesByParentId[i]);
                 }
                 else
                 {
-                    orderedNodes.Add(sortedNodesByParentId[i]);
+                    parent.Children.Add(sortedNodesByParentId[i]);
                 }
             }
 
