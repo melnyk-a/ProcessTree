@@ -32,12 +32,12 @@ namespace ProcessTree.Domain
 
         public IEnumerable<ExtendProcess> Build()
         {
-            var sortedNodesByParentId = unorderedNodes.OrderByDescending(node => node.ParentId).ToArray();
+            var sortedNodesByParentId = unorderedNodes.OrderBy(node => node.ProcessId).ToArray();
 
             for (int i = 0; i < sortedNodesByParentId.Length; ++i)
             {
                 ExtendProcess parent = FindInTree(sortedNodesByParentId[i].ParentId);
-                if(sortedNodesByParentId[i].ParentId == 0 || parent==null)
+                if((sortedNodesByParentId[i].ParentId == 0 && sortedNodesByParentId[i].ProcessId==0) || parent==null)
                 {
                     orderedNodes.Add(sortedNodesByParentId[i]);
                 }
