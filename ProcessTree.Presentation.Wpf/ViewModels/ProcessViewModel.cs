@@ -1,11 +1,12 @@
 ﻿using ProcessTree.DomainModels;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ProcessTree.Presentation.Wpf.ViewModels
 {
     internal sealed class ProcessViewModel
     {
-        private readonly ICollection<ProcessViewModel> innerProcesses = new List<ProcessViewModel>();
+        private readonly ICollection<ProcessViewModel> innerProcesses = new ObservableCollection<ProcessViewModel>();
         private readonly ExtendProcess process;
         
         public ProcessViewModel(ExtendProcess process)
@@ -18,7 +19,7 @@ namespace ProcessTree.Presentation.Wpf.ViewModels
             }
         }
 
-        public IEnumerable<ProcessViewModel> InnerProcesses => innerProcesses;
+        public ICollection<ProcessViewModel> InnerProcesses => innerProcesses;
 
         public string Name => process.Name;
 
